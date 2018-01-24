@@ -11,6 +11,7 @@ public class Application implements CommandLineRunner {
 
     @Autowired
     private MessageRepository messageRepository;
+    
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
