@@ -13,6 +13,7 @@ public class Application implements CommandLineRunner {
     private MessageRepository messageRepository;
 
     public static void main(String[] args) {
+        
         SpringApplication.run(Application.class, args);
     }
 
