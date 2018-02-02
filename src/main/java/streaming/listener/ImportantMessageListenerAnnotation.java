@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import streaming.message.Message;
 
 @Log
-@Service
+//@Service
 public class ImportantMessageListenerAnnotation {
 
     @KafkaListener(id = "id", groupId = "group1", topics = {"important", "void"})
     public void listen(Message message) {
-        log.info(message.toString());
+        log.info("ANNOTATION LISTENER: " + message.toString());
     }
 }

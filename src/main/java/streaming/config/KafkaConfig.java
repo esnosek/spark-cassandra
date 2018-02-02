@@ -12,7 +12,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
+import org.springframework.kafka.listener.KafkaMessageListenerContainer;
+import org.springframework.kafka.listener.config.ContainerProperties;
+import streaming.listener.ImportantMessageListener;
 import streaming.listener.MessageProducerListener;
+import streaming.listener.VoidMessageListener;
 import streaming.message.Message;
 import streaming.message.MessageDeserializer;
 import streaming.message.MessageSerializer;
@@ -45,19 +49,19 @@ public class KafkaConfig {
 //    }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<Integer, String> factory =
+    public ConcurrentKafkaListenerContainerFactory<Integer, Message> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<Integer, Message> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
 
     @Bean
-    public ConsumerFactory<Integer, String> consumerFactory() {
+    public ConsumerFactory<Integer, Message> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfigs());
     }
 
-    @Bean
+    @Bean("consumerConfigs")
     public Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, hostname);
