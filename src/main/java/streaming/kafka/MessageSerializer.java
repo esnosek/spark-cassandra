@@ -1,7 +1,8 @@
-package streaming.message;
+package streaming.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Serializer;
+import streaming.kafka.entity.Message;
 
 import java.util.Map;
 

@@ -1,4 +1,8 @@
-package streaming.message;
+package streaming.kafka;
+
+import streaming.kafka.entity.ImportantMessage;
+import streaming.kafka.entity.Message;
+import streaming.kafka.entity.VoidMessage;
 
 import java.util.function.Function;
 

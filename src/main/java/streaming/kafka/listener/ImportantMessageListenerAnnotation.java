@@ -1,12 +1,11 @@
-package streaming.listener;
+package streaming.kafka.listener;
 
 import lombok.extern.java.Log;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
-import streaming.message.Message;
+import streaming.kafka.entity.Message;
 
 @Log
-//@Service
+//@Service !Inactive!
 public class ImportantMessageListenerAnnotation {
 
     @KafkaListener(id = "id", groupId = "group1", topics = {"important", "void"})

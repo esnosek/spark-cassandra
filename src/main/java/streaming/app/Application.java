@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import streaming.app.cassandra.CassandraSchemaCreator;
+import streaming.app.generator.MessageGenerator;
+import streaming.app.generator.MessageGeneratorThread;
+import streaming.spark.MessageReceiver;
 @Log
 @SpringBootApplication(scanBasePackages = {"streaming"})
 public class Application implements CommandLineRunner {
@@ -14,10 +17,10 @@ public class Application implements CommandLineRunner {
     private MessageGenerator messageGenerator;
 
     @Autowired
-    private SparkKafkaIntegration sparkKafkaIntegration;
+    private MessageReceiver messageReceiver;
 
     @Autowired
-    private CassandraCreator cassandraCreator;
+    private CassandraSchemaCreator cassandraSchemaCreator;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -25,10 +28,10 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        cassandraCreator.createSchema();
+        cassandraSchemaCreator.createSchema();
         Thread generator = new Thread(new MessageGeneratorThread(messageGenerator), "generator");
         generator.start();
-        sparkKafkaIntegration.test();
+        messageReceiver.receive();
     }
 
 }

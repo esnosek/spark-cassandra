@@ -12,14 +12,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
-import org.springframework.kafka.listener.KafkaMessageListenerContainer;
-import org.springframework.kafka.listener.config.ContainerProperties;
-import streaming.listener.ImportantMessageListener;
-import streaming.listener.MessageProducerListener;
-import streaming.listener.VoidMessageListener;
-import streaming.message.Message;
-import streaming.message.MessageDeserializer;
-import streaming.message.MessageSerializer;
+import streaming.kafka.listener.MessageProducerListener;
+import streaming.kafka.entity.Message;
+import streaming.kafka.MessageDeserializer;
+import streaming.kafka.MessageSerializer;
 
 import java.util.HashMap;
 import java.util.Map;

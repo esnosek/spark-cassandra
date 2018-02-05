@@ -1,9 +1,9 @@
-package streaming.listener;
+package streaming.kafka.listener;
 
 import lombok.extern.java.Log;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.listener.MessageListener;
-import streaming.message.ImportantMessage;
+import streaming.kafka.entity.ImportantMessage;
 
 @Log
 public class ImportantMessageListener implements MessageListener<Integer, ImportantMessage> {

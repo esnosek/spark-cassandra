@@ -1,10 +1,10 @@
-package streaming.listener;
+package streaming.kafka.listener;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.support.ProducerListener;
-import streaming.message.Message;
+import streaming.kafka.entity.Message;
 
 @Log
 @NoArgsConstructor

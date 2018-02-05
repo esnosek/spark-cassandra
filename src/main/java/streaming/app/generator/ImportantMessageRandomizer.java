@@ -1,16 +1,16 @@
-package streaming.app;
+package streaming.app.generator;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import streaming.MessageSender;
-import streaming.message.Message;
-import streaming.message.VoidMessage;
+import streaming.kafka.MessageSender;
+import streaming.kafka.entity.ImportantMessage;
+import streaming.kafka.entity.Message;
 
 @Service
-public class VoidMessageRandomizer {
+public class ImportantMessageRandomizer {
 
-    private static final String TOPIC = "void";
+    private static final String TOPIC = "important";
 
     @Autowired
     private MessageSender messageSender;
@@ -18,8 +18,7 @@ public class VoidMessageRandomizer {
     public void sendMessage() {
         String id = RandomStringUtils.randomNumeric(3);
         String text = RandomStringUtils.randomAlphanumeric(10);
-        Message message = new VoidMessage(id, text);
+        Message message = new ImportantMessage(id, text);
         messageSender.send(TOPIC, message);
     }
-
 }

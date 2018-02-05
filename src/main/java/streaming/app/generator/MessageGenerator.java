@@ -1,4 +1,4 @@
-package streaming.app;
+package streaming.app.generator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

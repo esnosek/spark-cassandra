@@ -1,4 +1,4 @@
-package streaming.message;
+package streaming.kafka.entity;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package streaming.app;
+package streaming.app.generator;
 
 public class MessageGeneratorThread implements Runnable {
 
